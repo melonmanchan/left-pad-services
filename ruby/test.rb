@@ -22,4 +22,14 @@ describe "Left pad" do
         get '/?str=paddin%27%20oswalt&len=68&ch=@'
         { str: '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@paddin\' oswalt' }.to_json.must_equal last_response.body
     end
+
+    it "should handle missing paddable string" do
+        get '/?len=68&ch=@'
+        { str: '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@' }.to_json.must_equal last_response.body
+    end
+
+    it "should handle no parameters" do
+        get '/'
+        { str: '' }.to_json.must_equal last_response.body
+    end
 end
