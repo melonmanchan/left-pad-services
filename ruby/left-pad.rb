@@ -1,6 +1,6 @@
 module LeftPad
     def LeftPad.leftPad(str, len, ch)
-        i = -1
+        i = 0
 
         ch ||= ' '
 
