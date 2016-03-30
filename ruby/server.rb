@@ -10,5 +10,6 @@ get '/' do
     ch  = params['ch']  || ""
     len = params['len'] || 0
 
+    content_type :json, 'charset' => 'utf-8'
     { str: LeftPad.leftPad(str, len, ch) }.to_json
 end
