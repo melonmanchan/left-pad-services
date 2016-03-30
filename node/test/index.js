@@ -10,7 +10,7 @@ test('Should leftpad correctly', t => {
         .expect('Content-Type', /json/)
         .end((err, res) => {
             if (err) throw err;
-            t.equal(res.body.str, `@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@paddin' oswalt`)
+            t.equal(res.body.str, `@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@paddin' oswalt`);
             t.end();
         });
 });
@@ -22,7 +22,7 @@ test('Should handle missing paddable string correctly', t => {
         .expect('Content-Type', /json/)
         .end((err, res) => {
             if (err) throw err;
-            t.equal(res.body.str, `@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@`)
+            t.equal(res.body.str, `@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@`);
             t.end();
         });
 });
@@ -34,7 +34,7 @@ test('Should handle missing char string', t => {
         .expect('Content-Type', /json/)
         .end((err, res) => {
             if (err) throw err;
-            t.equal(res.body.str, `                                                      paddin' oswalt`)
+            t.equal(res.body.str, `                                                      paddin' oswalt`);
             t.end();
         });
 });
@@ -46,7 +46,7 @@ test('Should handle no parameters', t => {
         .expect('Content-Type', /json/)
         .end((err, res) => {
             if (err) throw err;
-            t.equal(res.body.str, '')
+            t.equal(res.body.str, '');
             t.end();
         });
 });
