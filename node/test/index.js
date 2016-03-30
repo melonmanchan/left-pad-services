@@ -14,3 +14,15 @@ test('Should leftpad correctly', t => {
             t.end();
         });
 });
+
+test('Should handle missing paddable string correctly', t => {
+    request(app)
+        .get('?len=68&ch=@')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .end((err, res) => {
+            if (err) throw err;
+            t.equal(res.body.str, `@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@`)
+            t.end();
+        });
+});
