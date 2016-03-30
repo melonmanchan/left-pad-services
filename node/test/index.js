@@ -26,3 +26,15 @@ test('Should handle missing paddable string correctly', t => {
             t.end();
         });
 });
+
+test('Should handle no parameters', t => {
+    request(app)
+        .get('/')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .end((err, res) => {
+            if (err) throw err;
+            t.equal(res.body.str, '')
+            t.end();
+        });
+});
