@@ -14,6 +14,10 @@ app.get('/', (req, res) => {
     res.status(200).json({ str: leftpad(str, len, ch) });
 });
 
-app.listen(port, () => {
-    console.log(`Express app running at ${ip.address()}:${port}`);
-});
+if (!module.parent) {
+    app.listen(port, () => {
+        console.log(`Express app running at ${ip.address()}:${port}`);
+    });
+}
+
+export default app;
