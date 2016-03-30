@@ -5,6 +5,8 @@ require 'json'
 
 require_relative 'left-pad'
 
+set :port, 3000
+
 get '/' do
     str = params['str'] || ""
     ch  = params['ch']  || ""
