@@ -9,7 +9,7 @@ set :port, 3000
 
 get '/' do
     str = params['str'] || ""
-    ch  = params['ch']  || ""
+    ch  = params['ch']  || " "
     len = params['len'] || 0
 
     content_type :json, 'charset' => 'utf-8'
