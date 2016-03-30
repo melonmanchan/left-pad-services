@@ -6,12 +6,13 @@ import leftpad from './left-pad';
 const app  = express();
 const port = process.env.PORT || 3000;
 
-app.get('/', (req, res, next) => {
-    let str = req.query.str;
+app.get('/', (req, res) => {
+    let   str = req.query.str;
     const ch  = req.query.ch;
     const len = req.query.len;
 
-    typeof str === 'undefined' ? str = '' : str = str;
+    if (typeof str === 'undefined') str = '';
+
     res.status(200).json({ str: leftpad(str, len, ch) });
 });
 
