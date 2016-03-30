@@ -28,6 +28,11 @@ describe "Left pad" do
         { str: '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@' }.to_json.must_equal last_response.body
     end
 
+    it "should handle missing char string" do
+        get '/?str=paddin%27%20oswalt&len=68'
+        { str: '                                                      paddin\' oswalt' }.to_json.must_equal last_response.body
+    end
+
     it "should handle no parameters" do
         get '/'
         { str: '' }.to_json.must_equal last_response.body
