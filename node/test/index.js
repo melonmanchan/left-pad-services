@@ -38,3 +38,4 @@ test('Should handle no parameters', t => {
             t.end();
         });
 });
+
