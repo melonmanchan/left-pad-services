@@ -4,16 +4,16 @@ import org.scalatra._
 
 class LeftPadServlet extends LeftpadStack {
   def padLeft(ch:String, len:Int, str:String) : String = {
-    return "Hi"
+    return str.reverse.padTo(len, ch).reverse.mkString("")
   }
 
   get("/") {
     val ch = params.get("ch").getOrElse(" ")
     val str = params.get("str").getOrElse("")
-    val len = params.get("len").getOrElse("0")
+    val len = params.get("len").getOrElse("0").toInt
 
     <div>
-    {ch}, {str}, {len}
+    {padLeft(ch, len, str)}
     </div>
   }
 
