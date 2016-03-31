@@ -1,13 +1,32 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"strconv"
+	"strings"
+)
+
+func leftPad(str string, ch string, len int) string {
+	return strings.Repeat(ch, len) + str
+}
 
 func main() {
 	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
+	r.GET("/", func(c *gin.Context) {
+
+		str := c.DefaultQuery("str", "")
+		len := c.DefaultQuery("len", "0")
+		ch := c.DefaultQuery("ch", " ")
+
+		lenInt, err := strconv.Atoi(len)
+
+		if err != nil {
+			lenInt = 0
+		}
+
 		c.JSON(200, gin.H{
-			"message": "pong",
+			"str": leftPad(str, ch, lenInt),
 		})
 	})
-	r.Run() // listen and server on 0.0.0.0:8080
+	r.Run(":3000")
 }
