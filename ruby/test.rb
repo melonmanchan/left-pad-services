@@ -11,7 +11,6 @@ def app
     Sinatra::Application
 end
 
-
 describe "Left pad" do
     it "should return json" do
         get '/'
