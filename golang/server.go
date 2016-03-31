@@ -3,11 +3,18 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"strconv"
-	"strings"
 )
 
-func leftPad(str string, ch string, len int) string {
-	return strings.Repeat(ch, len) + str
+func leftPad(str string, padLen int, ch string) string {
+	i := 0
+	length := padLen - len(str)
+
+	for i < length {
+		i = i + 1
+		str = ch + str
+	}
+
+	return str
 }
 
 func main() {
@@ -25,7 +32,7 @@ func main() {
 		}
 
 		c.JSON(200, gin.H{
-			"str": leftPad(str, ch, lenInt),
+			"str": leftPad(str, lenInt, ch),
 		})
 	})
 	r.Run(":3000")
