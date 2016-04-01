@@ -1,0 +1,14 @@
+{
+    "name": "melonmanchan/leftpad",
+    "description": "Leftpad as a service",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matti Jokitulppo",
+            "email": "melonmanchan@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "^3.3"
+    }
+}
