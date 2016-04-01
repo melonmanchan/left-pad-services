@@ -21,7 +21,6 @@ int left_pad(char *buffer, size_t buflen, const char *in, size_t length, char pa
     return 1;
 }
 
-
 int page(struct http_request *req)
 {
     u_int16_t len;
