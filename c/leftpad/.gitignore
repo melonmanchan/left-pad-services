@@ -1,0 +1,6 @@
+kore
+*.o
+.objs
+parameters.so
+assets.h
+cert
