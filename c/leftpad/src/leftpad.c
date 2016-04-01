@@ -26,12 +26,12 @@ int page(struct http_request *req)
     u_int16_t len;
     char *str;
     char *ch;
-    char buffer[1024];
-    struct kore_buf *buf;
+    char pad_buffer[1024];
+    struct kore_buf *kore_buffer;
 
     http_populate_get(req);
 
-    buf = kore_buf_create(128);
+    kore_buffer = kore_buf_create(128);
 
     if (!http_argument_get_uint16(req, "len", &len)) {
         len = 0;
@@ -45,13 +45,13 @@ int page(struct http_request *req)
         ch = " ";
     }
 
-    left_pad(buffer, sizeof(buffer), str, len, *ch);
+    left_pad(pad_buffer, sizeof(pad_buffer), str, len, *ch);
 
-    kore_buf_appendf(buf, "{ \"str\": \"%s\"}", buffer);
+    kore_buf_appendf(kore_buffer, "{ \"str\": \"%s\"}", pad_buffer);
 
     http_response_header(req, "content-type", "application/json");
-	http_response(req, 200, buf->data, buf->offset);
-    kore_buf_free(buf);
+	http_response(req, 200, kore_buffer->data, kore_buffer->offset);
+    kore_buf_free(kore_buffer);
 
 	return (KORE_RESULT_OK);
 }
