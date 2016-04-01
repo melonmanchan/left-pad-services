@@ -33,16 +33,16 @@ int page(struct http_request *req)
 
     buf = kore_buf_create(128);
 
-    if (http_argument_get_uint16(req, "len", &len)) {
-        //kore_buf_appendf(buf, "len uint: %d\n", len);
+    if (!http_argument_get_uint16(req, "len", &len)) {
+        len = 0;
     }
 
-    if (http_argument_get_string(req, "str", &str)) {
-        //kore_buf_appendf(buf, "str : %s\n", str);
+    if (!http_argument_get_string(req, "str", &str)) {
+        str = "";
     }
 
-    if (http_argument_get_string(req, "ch", &ch)) {
-        //kore_buf_appendf(buf, "ch : %s\n", ch);
+    if (!http_argument_get_string(req, "ch", &ch)) {
+        ch = " ";
     }
 
     left_pad(buffer, sizeof(buffer), str, len, *ch);
