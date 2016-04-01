@@ -1,6 +1,9 @@
 #include <kore/kore.h>
 #include <kore/http.h>
 
+int left_pad(char *, size_t, const char *, size_t, char);
+int	page(struct http_request *);
+
 int left_pad(char *buffer, size_t buflen, const char *in, size_t length, char padding)
 {
     size_t in_len = strlen(in);
@@ -18,17 +21,15 @@ int left_pad(char *buffer, size_t buflen, const char *in, size_t length, char pa
     return 1;
 }
 
-int		page(struct http_request *);
 
 int page(struct http_request *req)
 {
-
     u_int16_t len;
     char *str;
     char *ch;
     char buffer[1024];
-
     struct kore_buf *buf;
+
     http_populate_get(req);
 
     buf = kore_buf_create(128);
