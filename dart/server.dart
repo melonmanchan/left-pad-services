@@ -7,11 +7,11 @@ main() {
     HttpServer.bind('localhost', port).then((HttpServer server) {
         print('Server started on port: ${port}');
         server.listen((HttpRequest request) {
-                var str = request.uri.queryParameters['str'] ?? '';
-                var ch = request.uri.queryParameters['ch'] ?? ' ';
-                var len = request.uri.queryParameters['len'] ?? '0';
+                String str = request.uri.queryParameters['str'] ?? '';
+                String ch = request.uri.queryParameters['ch'] ?? ' ';
+                String len = request.uri.queryParameters['len'] ?? '0';
 
-                var output = {'str': str.padLeft(int.parse(len), ch)};
+                Object output = {'str': str.padLeft(int.parse(len), ch)};
 
                 request.response..headers.set(HttpHeaders.CONTENT_TYPE, 'application/json');
                 request.response..headers.set('Access-Control-Allow-Origin','*');
