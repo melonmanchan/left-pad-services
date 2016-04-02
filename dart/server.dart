@@ -1,5 +1,5 @@
-import 'dart:io';
 import 'dart:convert' show JSON;
+import 'dart:io';
 
 main() {
     int port = 3000;
@@ -13,9 +13,12 @@ main() {
 
                 Map output = {'str': str.padLeft(int.parse(len), ch)};
 
-                request.response..headers.set(HttpHeaders.CONTENT_TYPE, 'application/json');
-                request.response..headers.set('Access-Control-Allow-Origin','*');
-                request.response..write(JSON.encode(output))..close();
+                request.response
+                    ..headers.set(HttpHeaders.CONTENT_TYPE, 'application/json')
+                    ..headers.set('Access-Control-Allow-Origin', '*')
+                    ..write(JSON.encode(output))
+                    ..close();
+
             });
         });
 }
