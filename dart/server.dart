@@ -9,10 +9,10 @@ main() {
         server.listen((HttpRequest request) {
                 var str = request.uri.queryParameters['str'] ?? '';
                 var ch = request.uri.queryParameters['ch'] ?? ' ';
-                var len = request.uri.queryParameters['len'] ?? 0;
+                var len = request.uri.queryParameters['len'] ?? '0';
 
-                print(ch);
-                var output = {'str': str};
+                var output = {'str': str.padLeft(int.parse(len), ch)};
+
                 request.response..headers.set(HttpHeaders.CONTENT_TYPE, 'application/json');
                 request.response..headers.set('Access-Control-Allow-Origin','*');
                 request.response..write(JSON.encode(output))..close();
