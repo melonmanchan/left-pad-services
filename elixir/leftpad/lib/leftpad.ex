@@ -1,0 +1,2 @@
+defmodule Leftpad do
+end
