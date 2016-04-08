@@ -7,7 +7,13 @@ config :leftpad, Leftpad.Repos.Main,
   database: "leftpad_main",
   username: "user",
   password: "pass",
-  hostname: "localhost"
+  hostname: "localhost",
+  router: Leftpad.Router
+
+config :sugar, Leftpad.Router,
+    https_only: false,
+    http: [port: 3000],
+    https: false
 
 
 # This configuration is loaded before any dependency and is restricted
