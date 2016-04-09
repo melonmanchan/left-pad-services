@@ -3,10 +3,13 @@ defmodule Leftpad.Controllers.Main do
 
   def index(conn, []) do
       str = conn.params["str"] || ""
-      ch  = conn.params["ch"] || ""
+      ch  = conn.params["ch"] || "  "
       len = conn.params["len"] || 0
 
-      padded = String.rjust(str, String.to_integer(len), ?a)
+      ch_list = String.to_char_list(ch)
+      ch_head = hd(ch_list)
+
+      padded = String.rjust(str, String.to_integer(len), ch_head)
 
       json conn, %{str: padded}
   end
