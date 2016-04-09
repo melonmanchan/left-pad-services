@@ -6,11 +6,18 @@ defmodule Leftpad.Controllers.Main do
       ch  = conn.params["ch"] || "  "
       len = conn.params["len"] || 0
 
-      ch_list = String.to_char_list(ch)
-      ch_head = hd(ch_list)
+      cond do
+          str == "" ->
+              json conn, %{str: ""}
+          len == 0 ->
+              json conn, %{str: str}
+          true ->
+              ch_list = String.to_char_list(ch)
+              ch_head = hd(ch_list)
 
-      padded = String.rjust(str, String.to_integer(len), ch_head)
+              padded = String.rjust(str, String.to_integer(len), ch_head)
 
-      json conn, %{str: padded}
+              json conn, %{str: padded}
+      end
   end
 end
