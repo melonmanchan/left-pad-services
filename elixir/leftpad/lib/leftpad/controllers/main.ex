@@ -3,7 +3,7 @@ defmodule Leftpad.Controllers.Main do
 
   def index(conn, []) do
       str = conn.params["str"] || ""
-      ch  = conn.params["ch"] || "  "
+      ch  = conn.params["ch"]  || " "
       len = conn.params["len"] || 0
 
       cond do
