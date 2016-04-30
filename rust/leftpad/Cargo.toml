@@ -4,3 +4,5 @@ version = "0.1.0"
 authors = ["Matti Jokitulppo <melonmanchan@gmail.com>"]
 
 [dependencies]
+iron = "*"
+rustc-serialize = "*"
