@@ -18,7 +18,7 @@ fn main() {
             str: "Hallo".to_string(),
         };
 
-        let query = req.url.query.clone().unwrap();
+        let query = req.url.query.clone().unwrap_or("".to_string());
 
         let query_params = parse(&query.to_string());
 
