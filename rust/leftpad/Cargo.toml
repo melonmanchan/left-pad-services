@@ -6,3 +6,6 @@ authors = ["Matti Jokitulppo <melonmanchan@gmail.com>"]
 [dependencies]
 iron = "*"
 rustc-serialize = "*"
+
+[dependencies.queryst]
+git = "https://github.com/rustless/queryst"

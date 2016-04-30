@@ -1,10 +1,11 @@
 extern crate iron;
 extern crate rustc_serialize;
-use rustc_serialize::json;
+extern crate queryst;
 
+use rustc_serialize::json;
 use iron::prelude::*;
 use iron::status;
-
+use queryst::parse;
 
 #[derive(RustcEncodable)]
 pub struct PadJson {
@@ -12,10 +13,14 @@ pub struct PadJson {
 }
 
 fn main() {
-    fn handler(_: &mut Request) -> IronResult<Response> {
+    fn handler(req: &mut Request) -> IronResult<Response> {
         let padded_resp = PadJson {
             str: "Hallo".to_string(),
         };
+
+        let query = req.url.query.clone().unwrap();
+
+        let query_params = parse(&query.to_string());
 
         Ok(Response::with((status::Ok, json::encode(&padded_resp).unwrap())))
     }
