@@ -14,13 +14,19 @@ pub struct PadJson {
 
 fn main() {
     fn handler(req: &mut Request) -> IronResult<Response> {
-        let padded_resp = PadJson {
-            str: "Hallo".to_string(),
-        };
 
         let query = req.url.query.clone().unwrap_or("".to_string());
 
         let query_params: Json = parse(&query.to_string()).unwrap();
+        let obj = query_params.as_object().unwrap();
+
+        let str : &str = obj.get("str").unwrap().as_string().unwrap();
+        let len : u32 = obj.get("len").unwrap().as_string().unwrap().parse().unwrap();
+        let ch : &str = obj.get("ch").unwrap().as_string().unwrap();
+
+        let padded_resp = PadJson {
+            str: String::from(str),
+        };
 
         Ok(Response::with((status::Ok, json::encode(&padded_resp).unwrap())))
     }
