@@ -4,6 +4,14 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class Main {
+    public static String leftPad(String str, int len, String ch) {
+        StringBuffer padded = new StringBuffer(str);
+        while (padded.length() < len) {
+            padded.append(ch);
+        }
+        return padded.toString();
+    }
+
     public static void main(String[] args) {
         port(3000);
         get("/", (req, res) -> {
@@ -26,7 +34,7 @@ public class Main {
 
             res.type("application/json");
             Map resp = new HashMap();
-            resp.put("str", str);
+            resp.put("str", leftPad(str, len, ch));
             return new Gson().toJson(resp);
         });
     }
