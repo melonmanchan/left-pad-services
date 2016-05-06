@@ -12,7 +12,7 @@
   (if (= len "0") mystr (format (str "%" (str len) "s") mystr)))
 
 (defroutes app-routes
-  (GET "/" {:keys [params] :as request} (response {:foo 
+  (GET "/" {:keys [params] :as request} (response {:str
                                                   (leftpad (get params :str "") (get params :len "0"))}))
   (route/not-found "Not Found"))
 
