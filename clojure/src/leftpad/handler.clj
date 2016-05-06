@@ -7,8 +7,13 @@
             [ring.util.response :refer [response]]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
 
+(defn leftpad
+  [mystr len]
+  (if (= len "0") mystr (format (str "%" (str len) "s") mystr)))
+
 (defroutes app-routes
-  (GET "/" {:keys [params] :as request} (response {:foo (get params :str "none")}))
+  (GET "/" {:keys [params] :as request} (response {:foo 
+                                                  (leftpad (get params :str "") (get params :len "0"))}))
   (route/not-found "Not Found"))
 
 (def app
