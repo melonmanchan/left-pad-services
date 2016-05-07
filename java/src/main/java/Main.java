@@ -23,7 +23,7 @@ public class Main {
 
             String ch = req.queryParams("ch");
             if (ch == null) {
-                ch = "";
+                ch = " ";
             }
 
             String lenString = req.queryParams("len");
