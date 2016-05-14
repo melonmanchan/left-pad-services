@@ -13,9 +13,17 @@ pub struct PadJson {
 }
 
 fn left_pad(string: &str, len: u32, ch: &str) -> String {
-    let i = -1;
-    let mut temp_len = len - (string.len() as u32);
-    return String::from("hallo");
+
+    let mut i: i32 = -1;
+    let temp_len: i32 = len as i32 - (string.len() as i32);
+    let mut return_string : String = string.to_string();
+
+    while i < temp_len {
+        return_string = ch.to_string() + &string.to_string();
+        i = i + 1;
+    }
+
+    return String::from(return_string);
 }
 
 fn main() {
