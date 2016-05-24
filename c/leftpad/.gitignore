@@ -1,7 +1,8 @@
 kore
 *.o
+*.so
+leftpad.so
 .objs
 parameters.so
 assets.h
 cert
-leftpad.so
