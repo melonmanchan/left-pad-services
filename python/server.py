@@ -14,7 +14,7 @@ def index():
     ch  = request.args.get("ch")  or " "
     len = request.args.get("len") or 0
 
-    return jsonify(str=left_pad(str, ch, int(len)))
+    return jsonify(str=left_pad(str, ch, len))
 
 if __name__ == "__main__":
     app.run(port=3000, debug=True)
